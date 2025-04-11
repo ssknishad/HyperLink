@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="Hyperlink" />
+    <link rel="stylesheet" href="https://unpkg.com/kursor/dist/kursor.css" />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -19,17 +21,23 @@
     <!-- Top Bar -->
     <div class="top-bar">
       <div class="contact-info">
-        <span><i class="fa-solid fa-phone"></i> Phone: +022–444–4444</span>
-        <span><i class="fa fa-envelope"></i>Email: info@hyperlink.com</span>
+        <span><i class="fa-solid fa-phone"></i> +022–444–4444</span>
+        <span><i class="fa fa-envelope"></i> info@hyperlink.com</span>
         <span><i class="fa fa-location-dot"></i> Powai Mumbai, India</span>
       </div>
       <div class="top-right">
-        <div class="language">
-          <img src="./assets/united-states.svg" alt="Flag Icon" />
-          <span>English <i class="fas fa-chevron-down"></i></span>
+        <div class="language-dropdown">
+          <button class="language-toggle">
+            <img src="./assets/united-states.svg" alt="Flag Icon" />
+            <span>English <i class="fas fa-chevron-down"></i></span>
+          </button>
+          <!-- Dropdown (frontend only, no JS logic yet) -->
+          <ul class="language-menu">
+            <li><img src="./assets/united-states.svg" alt="EN" /> English</li>
+          </ul>
         </div>
         <div class="social-icons">
-          <span>Follow Us On:</span>
+          <span>Follow Us:</span>
           <a href="#"><i class="fab fa-facebook-f"></i></a>
           <a href="#"><i class="fab fa-threads"></i></a>
           <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -50,20 +58,18 @@
 
       <nav class="nav-links">
         <a href="#AboutUs">About Us</a>
-        <a href="#">Our Technology</a>
-        <a href="#">Why Choose Us</a>
+        <a href="#Technology">Our Technology</a>
+        <a href="#WhyChooseUs">Why Choose Us</a>
         <a href="#Services">Services</a>
         <a href="#contact-section">Contact</a>
       </nav>
 
       <div class="header-actions">
-        <i class="fa fa-search search-icon" title="Search"></i>
         <a href="#contact-section" class="btn-appointment">BOOK APPOINTMENT</a>
       </div>
     </header>
 
-    <!--Hero Section-->
-
+    <!-- Hero Section -->
     <section
       class="hero-section"
       style="background-image: url('./assets/pinkbg.png')"
@@ -88,9 +94,7 @@
             <a href="#contact-section" class="btn btn-pink"
               >FREE CONSULTATION</a
             >
-            <a href="#services-section" class="btn btn-purple"
-              >SEE ALL SERVICES</a
-            >
+            <a href="#Services" class="btn btn-purple">SEE ALL SERVICES</a>
           </div>
         </div>
 
@@ -176,7 +180,7 @@
             <div class="info">
               <h3>GENETIC MAPPING</h3>
               <p>
-                Unlock your body’s blueprint through advanced DNA sequencing.
+                Unlock your body's blueprint through advanced DNA sequencing.
               </p>
             </div>
           </div>
@@ -203,7 +207,11 @@
         </div>
 
         <div class="tech-right">
-          <img src="./assets/dnastrand.png" alt="DNA Illustration" />
+          <img
+            src="./assets/dnastrand.png"
+            alt="DNA Illustration"
+            class="tech-image"
+          />
         </div>
       </div>
     </section>
@@ -309,7 +317,6 @@
     </section>
 
     <!-- Testimonials -->
-
     <section class="testimonials">
       <div class="section-header">
         <div class="subtitle">
@@ -320,51 +327,54 @@
         <p>Trusted by patients. Backed by science. Validated by results.</p>
       </div>
 
-      <div class="testimonial-slider">
-        <div class="testimonial-card">
-          <img src="https://i.pravatar.cc/100?img=12" alt="Esther Howard" />
-          <p>
-            Very hard and great worker. He thinks about good solutions and has
-            awesome working morale.
-          </p>
-          <h4>Esther Howard</h4>
-          <small>Chief Executive Officer of <strong>GIGL</strong></small>
-        </div>
+      <div class="testimonial-slider-wrapper">
+        <div class="testimonial-slider" id="testimonialSlider">
+          <div class="testimonial-card">
+            <img src="https://i.pravatar.cc/100?img=12" alt="Esther Howard" />
+            <p>
+              Very hard and great worker. He thinks about good solutions and has
+              awesome working morale.
+            </p>
+            <h4>Esther Howard</h4>
+            <small>Chief Executive Officer of <strong>GIGL</strong></small>
+          </div>
 
-        <div class="testimonial-card active">
-          <img src="https://i.pravatar.cc/100?img=56" alt="Kavita Madhuri" />
-          <p>
-            Managing chronic conditions like diabetes requires a lot of
-            vigilance, but the hyperlink has simplified my life.
-          </p>
-          <h4>Kavita Madhuri</h4>
-          <small>Oncologist</small>
-        </div>
+          <div class="testimonial-card">
+            <img src="https://i.pravatar.cc/100?img=56" alt="Kavita Madhuri" />
+            <p>
+              Managing chronic conditions like diabetes requires a lot of
+              vigilance, but the hyperlink has simplified my life.
+            </p>
+            <h4>Kavita Madhuri</h4>
+            <small>Oncologist</small>
+          </div>
 
-        <div class="testimonial-card">
-          <img src="https://i.pravatar.cc/100?img=19" alt="Savannah Nguyen" />
-          <p>
-            Great Designer, does great work and is very open to change. Highly
-            recommended for tech design projects.
-          </p>
-          <h4>Savannah Nguyen</h4>
-          <small>Chief Executive Officer of <strong>GIGL</strong></small>
+          <div class="testimonial-card">
+            <img src="https://i.pravatar.cc/100?img=19" alt="Savannah Nguyen" />
+            <p>
+              Great Designer, does great work and is very open to change. Highly
+              recommended for tech design projects.
+            </p>
+            <h4>Savannah Nguyen</h4>
+            <small>Chief Executive Officer of <strong>GIGL</strong></small>
+          </div>
         </div>
       </div>
 
       <div class="testimonial-nav">
-        <button id="prev"><span>&larr;</span></button>
-        <button id="next"><span>&rarr;</span></button>
+        <button id="prevBtn">&larr;</button>
+        <button id="nextBtn">&rarr;</button>
       </div>
     </section>
 
     <!-- contact section -->
 
     <section
-      class="quote-section animate-fade-in"
+      class="quote-section"
       style="background-image: url('./assets/pinkbg.png')"
+      id="contact-section"
     >
-      <div class="section-header animate-slide-up">
+      <div class="section-header">
         <div class="subtitle">
           <img src="./assets/titlelogo.png" alt="icon" />
           <span>CONTACT US</span>
@@ -377,19 +387,20 @@
       </div>
 
       <div class="quote-container">
-        <div class="quote-image animate-float-in delay-1">
+        <div class="quote-image">
           <div class="image-bg1"></div>
           <img
             src="./assets/maledoctor.png"
             alt="Doctor Image"
             class="main-doctor"
+            loading="lazy"
           />
         </div>
 
-        <div class="quote-form-box animate-slide-up delay-2">
+        <div class="quote-form-box">
           <form class="quote-form" id="quoteForm">
             <div class="input-group">
-              <label class="form-label">First name</label>
+              <label class="form-label" for="firstName">First name</label>
               <input
                 type="text"
                 class="input-field"
@@ -399,7 +410,7 @@
               />
             </div>
             <div class="input-group">
-              <label class="form-label">Last name</label>
+              <label class="form-label" for="lastName">Last name</label>
               <input
                 type="text"
                 class="input-field"
@@ -409,7 +420,7 @@
               />
             </div>
             <div class="input-group">
-              <label class="form-label">Email</label>
+              <label class="form-label" for="email">Email</label>
               <input
                 type="email"
                 class="input-field"
@@ -419,14 +430,10 @@
               />
             </div>
             <div class="input-group">
-              <label class="form-label">Phone number</label>
+              <label class="form-label" for="phone">Phone number</label>
               <div class="phone-group">
-                <select class="select-field" id="countryCode">
-                  <option value="IN">IN</option>
-                  <option value="US">US</option>
-                </select>
                 <input
-                  type="tel"
+                  type="number"
                   class="input-field"
                   id="phone"
                   placeholder="+1 (555) 000-0000"
@@ -435,7 +442,7 @@
               </div>
             </div>
             <div class="input-group">
-              <label class="form-label">Message</label>
+              <label class="form-label" for="message">Message</label>
               <textarea
                 class="textarea-field"
                 id="message"
@@ -468,11 +475,11 @@
         <div class="footer-section">
           <h4 class="footer-title">Quick Links</h4>
           <ul class="footer-links">
-            <li><a href="#">› About Us</a></li>
-            <li><a href="#">› Our Pricing</a></li>
-            <li><a href="#">› Our Gallery</a></li>
-            <li><a href="#">› Appointment</a></li>
-            <li><a href="#">› Privacy Policy</a></li>
+            <li><a href="#AboutUs">› About Us</a></li>
+            <li><a href="#Technology">› Our Technology</a></li>
+            <li><a href="#WhyChooseUs">› Why Choose Us</a></li>
+            <li><a href="#Services">› Services</a></li>
+            <li><a href="#contact-section">› Contact</a></li>
           </ul>
         </div>
 
@@ -494,10 +501,16 @@
       </div>
 
       <div class="footer-bottom">
-        <p>Copyright ©2023 Hyperlink.com. All Rights Reserved</p>
+        <p>
+          &copy; 2025
+          <a href="https://hyperlink.health" target="_blank" rel="noopener"
+            >Hyperlink.health</a
+          >. All rights reserved.
+        </p>
       </div>
     </footer>
 
     <script src="script.js"></script>
+    <script src="https://unpkg.com/kursor"></script>
   </body>
 </html>
