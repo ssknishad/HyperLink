@@ -83,6 +83,26 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
+// services
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    document.querySelectorAll('.animate-fade-in, .animate-slide-up').forEach(el => {
+      observer.observe(el);
+    });
+  });
+
+//testimonial
 
 // Optional: Fade in steps on scroll
 const steps = document.querySelectorAll(".tech-step");
@@ -206,3 +226,18 @@ document.getElementById('quoteForm').addEventListener('submit', function (e) {
   alert('Form submitted successfully!');
   document.getElementById('quoteForm').reset();
 });
+
+
+  // Scroll-triggered animations
+  document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.animate-fade-in, .animate-slide-up, .animate-float-in')
+      .forEach(el => observer.observe(el));
+  });
