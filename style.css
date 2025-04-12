@@ -756,7 +756,7 @@ header {
 .tech-right img {
   width: 35rem;
   height: 40rem;
-  margin-top: -186px;
+  margin-top: -179px;
   margin-right: -241px;
 }
 
@@ -837,11 +837,7 @@ header {
   }
 
   .tech-right img {
-    width: 100%;
-    height: auto;
-    max-width: 300px;
-    margin: 0;
-    display: block;
+    display: none;
   }
 
   .section-header {
@@ -1050,7 +1046,7 @@ hr {
   }
 
   .floating-icon {
-    width: 40px;
+    width: 80px;
   }
 
   .choose-container {
