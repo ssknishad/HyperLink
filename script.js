@@ -1,22 +1,55 @@
-// MAIN HEADER
-const menuToggle = document.querySelector(".menu-toggle");
-const header = document.querySelector(".main-header");
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.querySelector(".menu-toggle");
+  const header = document.querySelector(".main-header");
+  const menuIcon = menuToggle.querySelector("i");
 
-menuToggle.addEventListener("click", () => {
-  header.classList.toggle("active");
+  // Toggle mobile menu
+  menuToggle.addEventListener("click", () => {
+    const isActive = header.classList.toggle("active");
+
+    // Toggle icon
+    menuIcon.classList.toggle("fa-bars");
+    menuIcon.classList.toggle("fa-times");
+
+    // Update accessibility
+    menuToggle.setAttribute("aria-expanded", isActive);
+  });
+
+  // Close mobile menu when clicking a link
+  document.querySelectorAll(".nav-links a").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (header.classList.contains("active")) {
+        header.classList.remove("active");
+        menuIcon.classList.remove("fa-times");
+        menuIcon.classList.add("fa-bars");
+        menuToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  });
+
+  // Add scroll effect
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  });
+
+  // Trigger scroll event on load in case page is reloaded while scrolled
+  window.dispatchEvent(new Event("scroll"));
 });
 
-// Initialize Kursor after the DOM is ready
-document.addEventListener("DOMContentLoaded", () => {
+// Initialize Kursor safely
+if (typeof kursor === "function") {
   new kursor({
     type: 2,
     color: "#1f0c46",
     removeDefaultCursor: true,
   });
-});
+}
 
 // hero serction
-
 document.addEventListener("DOMContentLoaded", function () {
   // Scroll animations
   const observers = document.querySelectorAll(
@@ -103,7 +136,6 @@ document.addEventListener("DOMContentLoaded", () => {
       observer.observe(el);
     });
 });
-
 
 // Scroll-triggered animations
 document.addEventListener("DOMContentLoaded", () => {
