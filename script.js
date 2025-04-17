@@ -48,36 +48,24 @@ if (typeof kursor === "function") {
     removeDefaultCursor: true,
   });
 }
-
-// hero serction
-document.addEventListener("DOMContentLoaded", function () {
-  // Scroll animations
-  const observers = document.querySelectorAll(
-    ".animate-slide-left, .animate-zoom-in, .animate-fade-up"
-  );
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    },
+document.addEventListener("DOMContentLoaded", () => {
+  // Define animation class groups with thresholds
+  const animationGroups = [
     {
+      selectors: [
+        ".animate-slide-left",
+        ".animate-zoom-in",
+        ".animate-fade-up",
+        ".animate-slide-right",
+        ".animate-fade-in",
+        ".animate-slide-up",
+        ".animate-float-in",
+      ],
       threshold: 0.3,
-    }
-  );
+    },
+  ];
 
-  observers.forEach((el) => observer.observe(el));
-});
-
-// aboutsus
-document.addEventListener("DOMContentLoaded", function () {
-  const animatedEls = document.querySelectorAll(
-    ".animate-slide-right, .animate-zoom-in"
-  );
-
+  // Create a single IntersectionObserver with dynamic thresholds
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -86,71 +74,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
     },
-    {
-      threshold: 0.3,
-    }
+    { threshold: 0.3 }
   );
 
-  animatedEls.forEach((el) => observer.observe(el));
-});
+  // Combine all selectors and observe them
+  const uniqueSelectors = new Set();
+  animationGroups.forEach((group) => {
+    group.selectors.forEach((selector) => uniqueSelectors.add(selector));
+  });
 
-// technology
-
-// why choose us
-document.addEventListener("DOMContentLoaded", () => {
-  const animatedElements = document.querySelectorAll(
-    ".animate-fade-in, .animate-slide-up"
-  );
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    },
-    { threshold: 0.2 }
-  );
-
-  animatedElements.forEach((el) => observer.observe(el));
-});
-
-// services
-
-document.addEventListener("DOMContentLoaded", () => {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    },
-    { threshold: 0.2 }
-  );
-
-  document
-    .querySelectorAll(".animate-fade-in, .animate-slide-up")
-    .forEach((el) => {
-      observer.observe(el);
-    });
-});
-
-// Scroll-triggered animations
-document.addEventListener("DOMContentLoaded", () => {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    },
-    { threshold: 0.2 }
-  );
-
-  document
-    .querySelectorAll(".animate-fade-in, .animate-slide-up, .animate-float-in")
-    .forEach((el) => observer.observe(el));
+  uniqueSelectors.forEach((selector) => {
+    document.querySelectorAll(selector).forEach((el) => observer.observe(el));
+  });
 });
