@@ -376,7 +376,7 @@ header {
 }
 
 .hero-text {
-  flex: 1 1 500px;
+  flex: 1 1;
   max-width: 600px;
 }
 
@@ -490,7 +490,7 @@ header {
   }
 
   .hero-image img {
-    width: 25rem;
+    width: 33rem;
     height: auto;
     margin-left: -100px;
     margin-bottom: -74px;
@@ -562,7 +562,7 @@ header {
     text-align: center;
   }
   .hero-section {
-    padding: 7rem 2% 1rem;
+    padding: 7rem 2% 3rem;
   }
 }
 .feature-boxes {
@@ -695,9 +695,9 @@ header {
 }
 
 @media (max-width: 768px) {
-  .card-grid {
+  /* .card-grid {
     flex-direction: column;
-  }
+  } */
 }
 
 /* Card */
@@ -908,12 +908,22 @@ header {
   .aboutus-content h1 {
     font-size: 2.2rem;
   }
+
+  .img-large img {
+    width: 25rem;
+    height: auto;
+    margin-top: -30px;
+  }
 }
 
 @media (max-width: 768px) {
   .aboutus-wrapper {
     grid-template-columns: 1fr;
     text-align: center;
+  }
+
+  .img-large img {
+    display: none;
   }
 
   .aboutus-content h1 {
@@ -936,6 +946,10 @@ header {
 
   .aboutus-section {
     padding: 3rem 1rem;
+  }
+
+  .img-large img {
+    display: none;
   }
 }
 
