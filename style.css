@@ -490,10 +490,10 @@ header {
   }
 
   .hero-image img {
-    width: 33rem;
+    width: 30rem;
     height: auto;
     margin-left: -100px;
-    margin-bottom: -74px;
+    margin-bottom: -110px;
   }
   /* .hero-buttons {
     justify-content: center;
@@ -831,7 +831,7 @@ header {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  /* gap: 3rem; */
   align-items: center;
 }
 
@@ -906,11 +906,15 @@ header {
 /* Responsive Styles */
 @media (max-width: 1024px) {
   .aboutus-content h1 {
-    font-size: 2.2rem;
+    font-size: 2rem;
+  }
+
+  .aboutus-content p {
+    font-size: 0.9rem;
   }
 
   .img-large img {
-    width: 25rem;
+    width: 30rem;
     height: auto;
     margin-top: -30px;
   }
